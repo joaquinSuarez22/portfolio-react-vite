@@ -1,0 +1,87 @@
+/* Tailwind CSS imports */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Typography system - ready for Geist/SF Pro fonts */
+/* To add Geist later:
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap');
+body { font-family: 'Geist', system-ui, sans-serif; }
+*/
+
+@layer base {
+  /* CSS custom properties for design system colors */
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --radius: 0.5rem;
+  }
+
+  /* Smooth scrolling for anchor navigation */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* System font stack for optimal performance */
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+}
+
+@layer components {
+  /* Glassmorphism effect for cards and containers */
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+
+  /* Subtle glow effect for accent elements */
+  .glow {
+    box-shadow: 0 0 40px rgba(120, 119, 198, 0.25);
+  }
+
+  /* Hover glow effect with smooth transition */
+  .glow-hover {
+    transition: box-shadow 0.3s ease;
+  }
+
+  .glow-hover:hover {
+    box-shadow: 0 0 40px rgba(120, 119, 198, 0.4);
+  }
+
+  /* Responsive container with consistent padding */
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  /* Custom accent color utilities for brand consistency */
+  .text-accent-custom {
+    color: #7877c6;
+  }
+
+  .bg-accent-custom {
+    background-color: #7877c6;
+  }
+
+  .border-accent-custom {
+    border-color: #7877c6;
+  }
+}
