@@ -4,8 +4,8 @@ import { GeistMono } from 'geist/font/mono'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'Joaquín Suárez - Portfolio web',
+  description: 'Portfolio de Joaquín Suárez, Frontend Developer especializado en React y Tailwind CSS',
   generator: 'v0.app',
 }
 
