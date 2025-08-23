@@ -35,7 +35,7 @@ const Hero = () => {
                 Ver Proyectos
               </a>
               <a
-                href="public\CV Joaquin Suarez.pdf" 
+                href="/CV Joaquin Suarez.pdf" 
                 download
                 className={`inline-flex items-center justify-center px-8 py-3 rounded-lg font-medium transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-accent-custom focus:ring-offset-2 focus:ring-offset-transparent hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] ${theme === "dark" ? "bg-white/10 backdrop-blur-md border border-white/20 shadow-xl text-white hover:bg-white/15" : "bg-black/10 backdrop-blur-md border border-black/20 shadow-xl text-black hover:bg-black/15"}`}
               >
