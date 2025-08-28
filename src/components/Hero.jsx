@@ -48,11 +48,11 @@ const Hero = () => {
           <div className="flex justify-center lg:justify-end animate-fade-in">
             <div className="glass rounded-2xl p-8 glow-hover">
               <img
-                src="/joaquin-suarez-avatar.png"
-                alt="Joaquín Suárez - Frontend Developer"
+                src="/FotoCarnetJoaquinSuarez.jpeg" 
+                alt="Joaquin Suárez - Frontend Developer"
                 className="w-64 h-64 rounded-full object-cover mx-auto"
                 onError={(e) => {
-                  e.target.src = "/joaquin-suarez-avatar.png"
+                  e.target.src = "/FotoCarnetJoaquinSuarez.jpeg"
                 }}
               />
             </div>
