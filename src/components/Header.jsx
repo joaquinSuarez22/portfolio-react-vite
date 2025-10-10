@@ -28,7 +28,9 @@ const Header = () => {
               <a
                 key={link.href}
                 href={link.href}
-                className={`relative transition-all duration-300 ease-out focus:outline-none focus:border-none focus:ring-0 focus:shadow-none px-3 py-2 group rounded-md opacity-90 border-transparent border-none ${theme === "dark" ? "text-white/90" : "text-black/90"}`}
+                className={`relative transition-transform duration-200 ease-out focus:outline-none focus:border-none focus:ring-0 focus:shadow-none px-3 py-2 group rounded-md opacity-90 border-transparent border-none
+    ${theme === "dark" ? "text-white/90" : "text-black/90"}
+    hover:scale-110`}
               >
                 {link.label}
               </a>
@@ -65,7 +67,9 @@ const Header = () => {
                 key={link.href}
                 href={link.href}
                 onClick={handleNavClick}
-                className={`block transition-all duration-300 ease-out focus:outline-none px-3 py-2 rounded-md hover:bg-white/10 ${theme === "dark" ? "text-white/90" : "text-black/90"}`}
+                className={`block transition-transform duration-200 ease-out focus:outline-none px-3 py-2 rounded-md
+    ${theme === "dark" ? "text-white/90" : "text-black/90"}
+    hover:scale-110`}
               >
                 {link.label}
               </a>

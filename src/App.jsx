@@ -36,6 +36,12 @@ function App() {
               <TechStack />
             </div>
 
+            {/* Projects showcase */}
+            <div id="projects">
+              <Projects />
+            </div>
+            
+
             {/* About me section */}
             <div id="about">
               <About />
@@ -46,10 +52,7 @@ function App() {
               <WorkExperience />
             </div>
 
-            {/* Projects showcase */}
-            <div id="projects">
-              <Projects />
-            </div>
+           
 
             {/* Education/studies timeline */}
             <div id="studies">

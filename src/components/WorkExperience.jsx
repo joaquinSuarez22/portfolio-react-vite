@@ -8,7 +8,16 @@ const WorkExperience = () => {
 
   const experiences = [
     {
-      title: "Freelance — Desarrollo Web",
+      title: "Ventas de Tarjeta de Crédito",
+      company: "Cenco Pay",
+      period: "2025 – Actualidad",
+      description:
+        "Gestión integral de ventas de tarjetas de crédito para nuevos clientes. Prospección y calificación de leads, asesoramiento personalizado y cierre comercial por canales presenciales. Seguimiento postventa, reporte de métricas y cumplimiento de objetivos semanales.",
+      current: true,
+      hasLink: false,
+    },
+    {
+      title: "Desarrollo Web - Freelance",
       company: "Independiente",
       period: "2023 – Actualidad",
       description:
@@ -22,15 +31,15 @@ const WorkExperience = () => {
       period: "2025",
       description:
         "Asesoramiento en la venta de vehículos 0km por Plan Rombo. Gestión de cartera de clientes, tareas administrativas y acompañamiento en el proceso de suscripción hasta la entrega final.",
-      current: true,
+      current: false,
       hasLink: false,
     },
     {
-      title: "WebStudio - Co-Founder",
+      title: "WebStudio — Co-Founder",
       company: "WebStudio",
-      period: "2023 2025",
+      period: "2023 – 2025",
       description:
-        "Diseño y desarrollo de sitios web personalizados para clientes y pequeñas empresas. Coordinación de tareas administrativas y seguimiento de proyectos.Atención al cliente y gestión de consultas.Organización de agendas, manejo de correos y documentación. Colaboración en campañas publicitarias y redes sociales.",
+        "Diseño y desarrollo de sitios web para pequeños negocios. Coordinación de tareas administrativas y seguimiento de proyectos. Atención al cliente y colaboración en campañas digitales y redes sociales.",
       current: false,
       hasLink: false,
     },
@@ -83,7 +92,7 @@ const WorkExperience = () => {
 
                   {exp.hasLink && (
                     <a
-                      href="https://twitch.tv/midudev"
+                      href="#"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 mt-3 text-accent-custom hover:text-accent-custom/80 transition-colors font-medium"

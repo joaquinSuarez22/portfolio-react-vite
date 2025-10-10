@@ -23,8 +23,19 @@ const Projects = () => {
   }
 
   const projects = [
-    {
+
+{
       id: 1,
+      title: "Cabral & Asociados — Estudio Contable",
+      description:
+        "Página institucional para estudio contable: servicios, presentación del equipo, información de contacto y formulario de consulta. Diseño claro, profesional y adaptable a dispositivos móviles.",
+      image: "/placeholder.svg",
+      technologies: ["React", "Tailwind CSS", "TypeScript", "Next.js"],
+      buttons: [{ label: "Ver Sitio", icon: ExternalLink, href: "https://cabralasociadosestudiocontable.com.ar/" }],
+    },
+
+    {
+      id: 2,
       title: "Instituto Juan Pablo II",
       description:
         "Sitio web institucional completo para centro educativo. Incluye secciones de inscripción online, información académica detallada, contacto y noticias. Diseño responsivo y navegación intuitiva para estudiantes y padres.",
@@ -33,7 +44,7 @@ const Projects = () => {
       buttons: [{ label: "Ver Sitio", icon: ExternalLink, href: "#" }],
     },
     {
-      id: 2,
+      id: 3,
       title: "iCasescobar",
       description:
         "Landing page moderna para tienda especializada en iPhones. Catálogo de dispositivos nuevos y usados, servicio técnico especializado, integración directa con WhatsApp para consultas y sistema de cotización online.",
@@ -42,7 +53,7 @@ const Projects = () => {
       buttons: [{ label: "Ver Sitio", icon: ExternalLink, href: "#" }],
     },
     {
-      id: 3,
+      id: 4,
       title: "Alto Estilo Indumentaria",
       description:
         "Tienda online completa de indumentaria con catálogo organizado por categorías: remeras, pantalones y accesorios. Incluye carrito de compras funcional, sistema de promociones, filtros de búsqueda y checkout integrado.",
@@ -50,6 +61,7 @@ const Projects = () => {
       technologies: ["Tienda Nube", "CSS"],
       buttons: [{ label: "Ver Tienda", icon: ExternalLink, href: "#" }],
     },
+
   ]
 
   return (
@@ -115,6 +127,7 @@ const Projects = () => {
                             ? "bg-white/10 hover:bg-white/20 text-white border-white/20 hover:border-white/30"
                             : "bg-black/10 hover:bg-black/20 text-black border-black/20 hover:border-black/30"
                         }`}
+                        {...(project.id === 1 ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                       >
                         <button.icon className="w-4 h-4" />
                         {button.label}

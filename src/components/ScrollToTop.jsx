@@ -1,9 +1,11 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useTheme } from "../contexts/ThemeContext" // Agrega esta línea
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false)
+  const { theme } = useTheme() // Agrega esta línea
 
   // Show button when page is scrolled down
   useEffect(() => {
@@ -35,7 +37,7 @@ const ScrollToTop = () => {
       aria-label="Volver al inicio"
     >
       <svg
-        className="w-6 h-6 text-white"
+        className={`w-6 h-6 ${theme === "dark" ? "text-white" : "text-black"}`}
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
