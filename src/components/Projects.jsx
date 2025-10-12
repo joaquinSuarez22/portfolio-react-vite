@@ -23,8 +23,7 @@ const Projects = () => {
   }
 
   const projects = [
-
-{
+    {
       id: 1,
       title: "Cabral & Asociados — Estudio Contable",
       description:
@@ -33,7 +32,6 @@ const Projects = () => {
       technologies: ["React", "Tailwind CSS", "TypeScript", "Next.js"],
       buttons: [{ label: "Ver Sitio", icon: ExternalLink, href: "https://cabralasociadosestudiocontable.com.ar/" }],
     },
-
     {
       id: 2,
       title: "Instituto Juan Pablo II",
@@ -61,73 +59,79 @@ const Projects = () => {
       technologies: ["Tienda Nube", "CSS"],
       buttons: [{ label: "Ver Tienda", icon: ExternalLink, href: "#" }],
     },
-
   ]
 
   return (
     <section className="py-20 px-4">
       <div className="container mx-auto max-w-6xl">
-        {/* Header */}
+        {/* Header con ícono flotante */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Code className="w-8 h-8 text-accent-custom" />
-            <h2 className={`text-4xl font-bold ${theme === "dark" ? "text-white" : "text-black"}`}>Proyectos</h2>
+            <span className="float-icon">
+              <Code className="w-8 h-8 text-accent-custom" />
+            </span>
+            <h2 className={`text-4xl font-bold ${theme === "dark" ? "text-white" : "text-black"}`}>
+              Proyectos
+            </h2>
           </div>
         </div>
 
-        {/* Projects Grid */}
+        {/* Projects List */}
         <div className="space-y-12">
           {projects.map((project) => (
             <div
               key={project.id}
-              className="backdrop-blur-xl bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/10 rounded-3xl p-8 hover:scale-[1.02] hover:bg-white/15 dark:hover:bg-black/30 transition-all duration-300 shadow-xl"
+              className="backdrop-blur-xl bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/10 rounded-3xl p-6 hover:scale-[1.02] hover:bg-white/15 dark:hover:bg-black/30 transition-all duration-300 shadow-xl"
             >
-              <div className="grid lg:grid-cols-2 gap-8 items-center">
-                {/* Project Image */}
-                <img
-                  src={project.image || "/placeholder.svg"}
-                  alt={project.title}
-                  className="w-full h-64 lg:h-80 object-cover rounded-3xl order-2 lg:order-1 overflow-hidden"
-                />
+              {/* Mobile: reordenado; Desktop: igual que antes */}
+              <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 items-center">
+                {/* ===== Detalles ===== */}
+                <div className="w-full text-center lg:text-left order-1 flex flex-col gap-4">
+                  {/* 1) Título (mobile y desktop primero) */}
+                  <h3
+                    className={`order-1 lg:order-1 text-2xl lg:text-3xl font-bold ${
+                      theme === "dark" ? "text-white" : "text-black"
+                    }`}
+                  >
+                    {project.title}
+                  </h3>
 
-                {/* Project Details */}
-                <div className="order-1 lg:order-2 space-y-6">
-                  <div>
-                    <h3
-                      className={`text-2xl lg:text-3xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-black"}`}
-                    >
-                      {project.title}
-                    </h3>
+                  {/* 2) Texto (mobile 2°, desktop 3°) */}
+                  <p
+                    className={`order-2 lg:order-3 text-base leading-relaxed ${
+                      theme === "dark" ? "text-gray-300" : "text-gray-600"
+                    }`}
+                  >
+                    {project.description}
+                  </p>
 
-                    {/* Technologies */}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-wrap gap-2 mb-4">
-                      {project.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className={`px-3 py-1 text-sm rounded-full backdrop-blur-sm border text-center ${getTechColor(tech)}`}
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-
-                    <p className={`text-lg leading-relaxed ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}>
-                      {project.description}
-                    </p>
+                  {/* 3) Tecnologías (mobile 3°, desktop 2°) */}
+                  <div className="order-3 lg:order-2 grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-wrap gap-2 justify-center lg:justify-start">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className={`px-3 py-1 text-sm rounded-full backdrop-blur-sm border text-center ${getTechColor(
+                          tech
+                        )}`}
+                      >
+                        {tech}
+                      </span>
+                    ))}
                   </div>
 
-                  {/* Action Buttons */}
-                  <div className="flex flex-wrap gap-4">
+                  {/* Botones desktop (se mantienen en la columna de detalles) */}
+                  <div className="hidden lg:flex order-4 flex-wrap gap-4 mt-2">
                     {project.buttons.map((button) => (
                       <a
                         key={button.label}
                         href={button.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className={`inline-flex items-center gap-2 px-6 py-3 rounded-full border backdrop-blur-sm transition-all duration-300 hover:scale-105 ${
                           theme === "dark"
                             ? "bg-white/10 hover:bg-white/20 text-white border-white/20 hover:border-white/30"
                             : "bg-black/10 hover:bg-black/20 text-black border-black/20 hover:border-black/30"
                         }`}
-                        {...(project.id === 1 ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                       >
                         <button.icon className="w-4 h-4" />
                         {button.label}
@@ -135,11 +139,55 @@ const Projects = () => {
                     ))}
                   </div>
                 </div>
+
+                {/* ===== Imagen ===== */}
+                {/* Mobile: queda 4° por flujo (después de detalles); Desktop: igual que antes (columna derecha) */}
+                <div className="order-2 w-full">
+                  <img
+                    src={project.image || "/placeholder.svg"}
+                    alt={project.title}
+                    className="w-full h-64 lg:h-80 object-cover rounded-3xl overflow-hidden"
+                  />
+                </div>
+
+                {/* 5) Botón en mobile (debajo de la foto) */}
+                <div className="lg:hidden w-full flex justify-center mt-2 order-3">
+                  {project.buttons.map((button) => (
+                    <a
+                      key={button.label}
+                      href={button.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`w-full max-w-xs inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border backdrop-blur-sm transition-all duration-300 hover:scale-105 ${
+                        theme === "dark"
+                          ? "bg-white/10 hover:bg-white/20 text-white border-white/20 hover:border-white/30"
+                          : "bg-black/10 hover:bg-black/20 text-black border-black/20 hover:border-black/30"
+                      }`}
+                    >
+                      <button.icon className="w-4 h-4" />
+                      {button.label}
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Animación flotante del ícono del header */}
+      <style jsx global>{`
+        @keyframes floatY {
+          0% { transform: translateY(0); }
+          50% { transform: translateY(-8px); }
+          100% { transform: translateY(0); }
+        }
+        .float-icon {
+          display: inline-block;
+          will-change: transform;
+          animation: floatY 3s ease-in-out infinite;
+        }
+      `}</style>
     </section>
   )
 }

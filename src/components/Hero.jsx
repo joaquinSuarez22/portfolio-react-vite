@@ -28,7 +28,7 @@ const Hero = () => {
 
             <p className={`text-lg md:text-xl ${theme === "dark" ? "text-white/80" : "text-black/70"} text-left`}>
               Transformando ideas en soluciones digitales claras y accesibles.
-              Apasionado por el código limpio y el diseño intuitivo
+              Apasionado por el código limpio y el diseño intuitivo.
             </p>
 
             {/* Botones (alineados a la izquierda) */}

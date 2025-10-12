@@ -20,9 +20,12 @@ const About = () => {
         <div className="max-w-6xl mx-auto">
           <div className="glass rounded-2xl p-8 md:p-12">
             <h2
-              className={`text-3xl md:text-4xl font-bold mb-6 flex items-center ${theme === "dark" ? "text-white" : "text-black"}`}
+              className={`text-3xl md:text-4xl font-bold mb-6 flex items-center ${
+                theme === "dark" ? "text-white" : "text-black"
+              }`}
             >
-              <span className="text-2xl mr-3">👤</span>
+              {/* Icono flotando */}
+              <span className="text-2xl mr-3 float-icon">👤</span>
               Sobre mí
             </h2>
 
@@ -60,6 +63,26 @@ const About = () => {
           </div>
         </div>
       </div>
+
+      {/* Animación del ícono flotante */}
+      <style jsx>{`
+        @keyframes float {
+          0% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-8px);
+          }
+          100% {
+            transform: translateY(0);
+          }
+        }
+
+        .float-icon {
+          display: inline-block;
+          animation: float 3s ease-in-out infinite;
+        }
+      `}</style>
     </section>
   )
 }

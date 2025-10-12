@@ -60,7 +60,9 @@ const WorkExperience = () => {
         <div className="glass rounded-3xl p-8 md:p-12">
           {/* Header */}
           <div className="flex items-center gap-3 mb-12">
-            <Briefcase className="w-8 h-8 text-accent-custom" />
+            <span className="float-icon">
+              <Briefcase className="w-8 h-8 text-accent-custom" />
+            </span>
             <h2 className={`text-3xl md:text-4xl font-bold ${theme === "dark" ? "text-white" : "text-black"}`}>
               Experiencia laboral
             </h2>
@@ -109,6 +111,27 @@ const WorkExperience = () => {
           </div>
         </div>
       </div>
+
+      {/* Animación del ícono flotante */}
+      <style jsx global>{`
+        @keyframes floatY {
+          0% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-8px);
+          }
+          100% {
+            transform: translateY(0);
+          }
+        }
+
+        .float-icon {
+          display: inline-block;
+          will-change: transform;
+          animation: floatY 3s ease-in-out infinite;
+        }
+      `}</style>
     </section>
   )
 }
