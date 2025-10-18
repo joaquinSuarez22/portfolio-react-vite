@@ -24,31 +24,56 @@ const About = () => {
                 theme === "dark" ? "text-white" : "text-black"
               }`}
             >
-              {/* Icono flotando */}
               <span className="text-2xl mr-3 float-icon">👤</span>
               Sobre mí
             </h2>
 
             <div className="grid md:grid-cols-2 gap-12 items-center">
+              {/* Texto */}
               <div className="space-y-6">
-                <p className={`text-lg leading-relaxed ${theme === "dark" ? "text-white/90" : "text-black/80"}`}>
-                  Soy Joaquín Suárez, Técnico Universitario en Programación en la UTN. Me apasiona la tecnología y
-                  disfruto creando soluciones digitales claras, útiles y fáciles de usar.
+                <p
+                  className={`text-lg leading-relaxed ${
+                    theme === "dark" ? "text-white/90" : "text-black/80"
+                  }`}
+                >
+                  Mi nombre es <strong>Joaquín Suárez</strong>, tengo 23 años y soy{" "}
+                  <strong>Técnico Universitario en Programación</strong> por la UTN. Desde chico me apasiona la
+                  tecnología y la idea de transformar ideas en experiencias digitales que ayuden a las
+                  personas.
                 </p>
 
-                <p className={`text-lg leading-relaxed ${theme === "dark" ? "text-white/90" : "text-black/80"}`}>
-                  Cuento con experiencia en el desarrollo de páginas web personalizadas para clientes y pequeñas
-                  empresas, además de haber trabajado en atención al cliente y gestión administrativa, lo que fortaleció
-                  mis habilidades de organización, comunicación y orientación a resultados.
+                <p
+                  className={`text-lg leading-relaxed ${
+                    theme === "dark" ? "text-white/90" : "text-black/80"
+                  }`}
+                >
+                  Me dedico al <strong>desarrollo frontend</strong>, creando{" "}
+                  <strong>páginas web modernas y adaptadas a cada cliente</strong>, combinando diseño y
+                  código para lograr resultados visualmente atractivos y con propósito.
                 </p>
 
-                <p className={`text-lg leading-relaxed ${theme === "dark" ? "text-white/90" : "text-black/80"}`}>
-                  Actualmente sigo ampliando mis conocimientos en desarrollo frontend con React y Tailwind, con el
-                  objetivo de crecer como profesional IT, aportar valor a los proyectos en los que participe y mantener
-                  siempre una actitud de aprendizaje continuo.
+                <p
+                  className={`text-lg leading-relaxed ${
+                    theme === "dark" ? "text-white/90" : "text-black/80"
+                  }`}
+                >
+                  Además de mi formación técnica, trabajé en áreas de{" "}
+                  <strong>atención al cliente y gestión administrativa</strong>, donde aprendí a organizarme, comunicarme
+                  con claridad y mantener siempre una <strong>orientación a resultados</strong>.
+                </p>
+
+                <p
+                  className={`text-lg leading-relaxed ${
+                    theme === "dark" ? "text-white/90" : "text-black/80"
+                  }`}
+                >
+                  Actualmente sigo perfeccionándome en <strong>React</strong> y <strong>Tailwind</strong>, con el
+                  objetivo de seguir creciendo en el mundo IT y consolidar mi carrera tanto como{" "}
+                  <strong>desarrollador profesional</strong> como <strong>freelancer independiente</strong>.
                 </p>
               </div>
 
+              {/* Imagen */}
               <div className="flex justify-center md:justify-end">
                 <div className="relative">
                   <img

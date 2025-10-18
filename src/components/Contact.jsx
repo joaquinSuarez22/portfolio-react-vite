@@ -85,10 +85,23 @@ const Contact = () => {
 
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <p className={`text-lg mb-8 ${theme === "dark" ? "text-white/80" : "text-black/80"}`}>
-              ¿Tienes un proyecto en mente? Me encantaría escucharlo. Contáctame y trabajemos juntos para crear algo
-              increíble.
-            </p>
+          <p className="mb-8 text-center">
+  <span
+    className={`block text-2xl font-semibold mb-1 ${
+      theme === "dark" ? "text-white" : "text-black"
+    }`}
+  >
+    ¿Tienes un proyecto en mente?
+  </span>
+  <span
+    className={`block text-lg ${
+      theme === "dark" ? "text-white/80" : "text-black/80"
+    }`}
+  >
+    Me encantaría escucharlo. Contáctame y trabajemos juntos para crear algo increíble.
+  </span>
+</p>
+
 
             {/* Social Links */}
             <div className="flex justify-center gap-6">
@@ -178,7 +191,7 @@ const Contact = () => {
                           ? "bg-white/5 border-white/10 placeholder-white/50"
                           : "bg-black/5 border-black/20 placeholder-black/50"
                       } rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-custom focus:border-transparent transition-colors`}
-                      placeholder="ejemplo123@gmail.com"
+                      placeholder="TuEmail@gmail.com"
                     />
                   </div>
                 </div>
