@@ -1,14 +1,37 @@
 "use client"
 
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext, useState, useEffect } from "react"
 
 // Create theme context for global theme state management
 const ThemeContext = createContext()
 
 // Theme provider component that wraps the entire app
 export function ThemeProvider({ children }) {
-  // State to track if dark mode is active (default: true)
-  const [isDark, setIsDark] = useState(true)
+  // Initialize state from localStorage or default to true (dark mode)
+  const [isDark, setIsDark] = useState(() => {
+    // Only access localStorage on client side
+    if (typeof window !== "undefined") {
+      const savedTheme = localStorage.getItem("theme")
+      if (savedTheme !== null) {
+        return savedTheme === "dark"
+      }
+    }
+    return true // Default to dark mode
+  })
+
+  // Persist theme to localStorage and update HTML class whenever it changes
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("theme", isDark ? "dark" : "light")
+      // Add or remove 'dark' class from html element
+      const html = document.documentElement
+      if (isDark) {
+        html.classList.add("dark")
+      } else {
+        html.classList.remove("dark")
+      }
+    }
+  }, [isDark])
 
   // Function to toggle between dark and light themes
   const toggleTheme = () => {

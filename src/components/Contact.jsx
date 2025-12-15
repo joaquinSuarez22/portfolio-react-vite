@@ -8,7 +8,13 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/mdkwpozq"
 
 const Contact = () => {
   const { theme } = useTheme()
-  const [formData, setFormData] = useState({ name: "", email: "", message: "", _gotcha: "" })
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    motivo: "",
+    message: "",
+    _gotcha: "",
+  })
   const [submitting, setSubmitting] = useState(false)
   const [succeeded, setSucceeded] = useState(false)
   const [errorMsg, setErrorMsg] = useState("")
@@ -30,8 +36,12 @@ const Contact = () => {
       const data = new FormData()
       data.append("name", formData.name)
       data.append("email", formData.email)
+      data.append("motivo", formData.motivo)
       data.append("message", formData.message)
-      data.append("_subject", "Nuevo mensaje desde jjoaco.dev")
+      data.append(
+        "_subject",
+        `Nuevo mensaje desde jjoaco.dev · Motivo: ${formData.motivo || "Sin especificar"}`
+      )
 
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
@@ -41,7 +51,13 @@ const Contact = () => {
 
       if (res.ok) {
         setSucceeded(true)
-        setFormData({ name: "", email: "", message: "", _gotcha: "" })
+        setFormData({
+          name: "",
+          email: "",
+          motivo: "",
+          message: "",
+          _gotcha: "",
+        })
       } else {
         const json = await res.json().catch(() => ({}))
         const msg = json?.errors?.[0]?.message || "No se pudo enviar el formulario."
@@ -54,16 +70,42 @@ const Contact = () => {
     }
   }
 
+  // Link dinámico de WhatsApp con mensaje pre-armado
+  const buildWhatsAppUrl = () => {
+    const base = "https://wa.me/541168673889"
+    const motivoTexto = formData.motivo || "un proyecto"
+    const nombre = formData.name ? `Soy ${formData.name} y ` : ""
+    const texto = `${nombre}te escribo desde tu portfolio porque me interesa contactarte por ${motivoTexto}.`
+    const encoded = encodeURIComponent(texto)
+    return `${base}?text=${encoded}`
+  }
+
   const socialLinks = [
-    { name: "LinkedIn", href: "https://www.linkedin.com/in/joaquinsuarez/", icon: <Linkedin className="w-6 h-6" /> },
-    { name: "GitHub", href: "https://github.com/joaquinSuarez22", icon: <Github className="w-6 h-6" /> },
-    { name: "Email", href: "mailto:suarezjoaco22@gmail.com", icon: <Mail className="w-6 h-6" /> },
+    {
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/in/joaquinsuarez/",
+      icon: <Linkedin className="w-6 h-6" />,
+    },
+    {
+      name: "GitHub",
+      href: "https://github.com/joaquinSuarez22",
+      icon: <Github className="w-6 h-6" />,
+    },
+    {
+      name: "Email",
+      href: "mailto:suarezjoaco22@gmail.com",
+      icon: <Mail className="w-6 h-6" />,
+    },
     {
       name: "WhatsApp",
       href: "https://wa.me/541168673889?text=Hola%2C%20me%20interesa%20contactarte%20para%20un%20proyecto",
       icon: <Phone className="w-6 h-6" />,
     },
-    { name: "Instagram", href: "https://www.instagram.com/jjoaco.dev/", icon: <Instagram className="w-6 h-6" /> },
+    {
+      name: "Instagram",
+      href: "https://www.instagram.com/jjoaco.dev/",
+      icon: <Instagram className="w-6 h-6" />,
+    },
   ]
 
   return (
@@ -85,23 +127,22 @@ const Contact = () => {
 
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-          <p className="mb-8 text-center">
-  <span
-    className={`block text-2xl font-semibold mb-1 ${
-      theme === "dark" ? "text-white" : "text-black"
-    }`}
-  >
-    ¿Tienes un proyecto en mente?
-  </span>
-  <span
-    className={`block text-lg ${
-      theme === "dark" ? "text-white/80" : "text-black/80"
-    }`}
-  >
-    Me encantaría escucharlo. Contáctame y trabajemos juntos para crear algo increíble.
-  </span>
-</p>
-
+            <p className="mb-8 text-center">
+              <span
+                className={`block text-2xl font-semibold mb-1 ${
+                  theme === "dark" ? "text-white" : "text-black"
+                }`}
+              >
+                ¿Tienes un proyecto en mente?
+              </span>
+              <span
+                className={`block text-lg ${
+                  theme === "dark" ? "text-white/80" : "text-black/80"
+                }`}
+              >
+                Me encantaría escucharlo. Contáctame y trabajemos juntos para crear algo increíble.
+              </span>
+            </p>
 
             {/* Social Links */}
             <div className="flex justify-center gap-6">
@@ -149,10 +190,13 @@ const Contact = () => {
                 />
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Nombre */}
                   <div>
                     <label
                       htmlFor="name"
-                      className={`block text-sm font-medium mb-2 ${theme === "dark" ? "text-white" : "text-black"}`}
+                      className={`block text-sm font-medium mb-2 ${
+                        theme === "dark" ? "text-white" : "text-black"
+                      }`}
                     >
                       Nombre
                     </label>
@@ -172,10 +216,13 @@ const Contact = () => {
                     />
                   </div>
 
+                  {/* Email */}
                   <div>
                     <label
                       htmlFor="email"
-                      className={`block text-sm font-medium mb-2 ${theme === "dark" ? "text-white" : "text-black"}`}
+                      className={`block text-sm font-medium mb-2 ${
+                        theme === "dark" ? "text-white" : "text-black"
+                      }`}
                     >
                       Email
                     </label>
@@ -196,10 +243,67 @@ const Contact = () => {
                   </div>
                 </div>
 
+                {/* Motivo */}
+                <div>
+                  <label
+                    htmlFor="motivo"
+                    className={`block text-sm font-medium mb-2 ${
+                      theme === "dark" ? "text-white" : "text-black"
+                    }`}
+                  >
+                    Motivo de contacto
+                  </label>
+                  <select
+  id="motivo"
+  name="motivo"
+  value={formData.motivo}
+  onChange={handleChange}
+  required
+  className={`w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-custom focus:border-transparent transition-colors
+    ${theme === "dark"
+      ? "bg-white/5 border border-white/10 text-white"
+      : "bg-black/5 border border-black/20 text-black"
+    }
+  `}
+>
+  <option
+    value=""
+    className={theme === "dark" ? "bg-slate-900 text-white" : "bg-white text-black"}
+  >
+    Selecciona un motivo
+  </option>
+
+  <option
+    value="Trabajo"
+    className={theme === "dark" ? "bg-slate-900 text-white" : "bg-white text-black"}
+  >
+    Trabajo
+  </option>
+
+  <option
+    value="Presupuesto"
+    className={theme === "dark" ? "bg-slate-900 text-white" : "bg-white text-black"}
+  >
+    Presupuesto
+  </option>
+
+  <option
+    value="Consulta"
+    className={theme === "dark" ? "bg-slate-900 text-white" : "bg-white text-black"}
+  >
+    Consulta
+  </option>
+</select>
+
+                </div>
+
+                {/* Mensaje */}
                 <div>
                   <label
                     htmlFor="message"
-                    className={`block text-sm font-medium mb-2 ${theme === "dark" ? "text-white" : "text-black"}`}
+                    className={`block text-sm font-medium mb-2 ${
+                      theme === "dark" ? "text-white" : "text-black"
+                    }`}
                   >
                     Mensaje
                   </label>
@@ -225,15 +329,32 @@ const Contact = () => {
                   </p>
                 )}
 
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  className={`w-full md:w-auto px-8 py-3 bg-accent-custom hover:bg-accent-custom/90 text-white font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-accent-custom focus:ring-offset-2 focus:ring-offset-slate-900 ${
-                    submitting ? "opacity-60 cursor-not-allowed" : ""
-                  }`}
-                >
-                  {submitting ? "Enviando..." : "Enviar Mensaje"}
-                </button>
+                {/* Botones centrados: Enviar + WhatsApp */}
+                <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-4">
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className={`w-full md:w-auto px-8 py-3 bg-accent-custom hover:bg-accent-custom/90 text-white font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-accent-custom focus:ring-offset-2 focus:ring-offset-slate-900 ${
+                      submitting ? "opacity-60 cursor-not-allowed" : ""
+                    }`}
+                  >
+                    {submitting ? "Enviando..." : "Enviar mensaje"}
+                  </button>
+
+                  <a
+                    href={buildWhatsAppUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`w-full md:w-auto px-8 py-3 font-medium rounded-lg transition-colors flex items-center justify-center gap-2 border ${
+                      theme === "dark"
+                        ? "bg-white/5 border-white/20 text-white hover:bg-white/10"
+                        : "bg-black/5 border-black/20 text-black hover:bg-black/10"
+                    }`}
+                  >
+                    <Phone className="w-5 h-5" />
+                    Escribir por WhatsApp
+                  </a>
+                </div>
               </form>
             )}
           </div>
@@ -243,9 +364,15 @@ const Contact = () => {
       {/* Animación del ícono flotante */}
       <style jsx global>{`
         @keyframes floatY {
-          0% { transform: translateY(0); }
-          50% { transform: translateY(-8px); }
-          100% { transform: translateY(0); }
+          0% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-8px);
+          }
+          100% {
+            transform: translateY(0);
+          }
         }
         .float-icon {
           display: inline-block;

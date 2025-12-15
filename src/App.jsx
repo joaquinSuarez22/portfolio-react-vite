@@ -1,6 +1,6 @@
 // Main layout components
-import Header from "./components/Header"
 import Hero from "./components/Hero"
+import WhatIDo from "./components/WhatiDo"
 import TechStack from "./components/TechStack"
 import About from "./components/About"
 import WorkExperience from "./components/WorkExperience"
@@ -10,35 +10,33 @@ import Contact from "./components/Contact"
 import Footer from "./components/Footer"
 // Background and interactive components
 import BeamsBackground from "./components/BeamsBackground"
-import ScrollToTop from "./components/ScrollToTop"
-// Theme management
-import { ThemeProvider } from "./contexts/ThemeContext"
-import ThemeToggle from "./components/ThemeToggle"
+import SharedLayout from "./components/SharedLayout"
 
 function App() {
   return (
-    // Theme provider wraps entire app for dark/light mode functionality
-    <ThemeProvider>
+    <SharedLayout>
       {/* Animated background with beams effect */}
       <BeamsBackground intensity="medium">
         {/* Main content container with proper z-index layering */}
         <div className="relative z-10 min-h-screen text-white">
-          {/* Fixed navigation header */}
-          <Header />
-
           {/* Main content sections */}
           <main>
             {/* Hero section - landing area */}
             <Hero />
 
-            {/* Technology stack display */}
-            <div id="tech-stack">
-              <TechStack />
+            {/* What I Do section */}
+            <div id="whatido">
+              <WhatIDo />
             </div>
 
             {/* Projects showcase */}
             <div id="projects">
               <Projects />
+            </div>
+
+            {/* Technology stack display */}
+            <div id="tech-stack">
+              <TechStack />
             </div>
             
 
@@ -51,8 +49,6 @@ function App() {
             <div id="experience">
               <WorkExperience />
             </div>
-
-           
 
             {/* Education/studies timeline */}
             <div id="studies">
@@ -67,15 +63,9 @@ function App() {
 
           {/* Site footer */}
           <Footer />
-
-          {/* Floating scroll to top button */}
-          <ScrollToTop />
-
-          {/* Theme toggle button (fixed top-right) */}
-          <ThemeToggle />
         </div>
       </BeamsBackground>
-    </ThemeProvider>
+    </SharedLayout>
   )
 }
 

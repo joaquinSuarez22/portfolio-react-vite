@@ -1,10 +1,25 @@
 // Education and certification data for the timeline component
 export const studies = [
   {
+    title: "Tecnicatura en Desarrollo Web",
+    place: "UNDeC",
+    range: "2026 - en curso",
+    detail:
+      "Carrera universitaria orientada al desarrollo web moderno, frontend, backend y tecnologías actuales.",
+  },
+  {
+    title: "Tecnicatura en Ciencia de Datos",
+    place: "UNDeC",
+    range: "2026 - en curso",
+    detail:
+      "Formación profesional en análisis de datos, modelos predictivos, estadística y herramientas de data science.",
+  },
+  {
     title: "Tecnicatura Universitaria en Programación",
     place: "UTN",
     range: "2022 - 2025",
-    detail: "Carrera universitaria en programación con enfoque en desarrollo de software y tecnologías modernas.",
+    detail:
+      "Carrera universitaria en programación con enfoque en desarrollo de software y tecnologías modernas.",
   },
   {
     title: "Programa 'Tu Futuro' — Testing QA",
@@ -16,7 +31,8 @@ export const studies = [
     title: "Cursos 2024",
     place: "",
     range: "2024",
-    detail: "WordPress — CoderHouse\nTesting QA — CoderHouse\nGestión ágil de proyectos QA con Jira — IW",
+    detail:
+      "WordPress — CoderHouse\nTesting QA — CoderHouse\nGestión ágil de proyectos QA con Jira — IW",
     isGroup: true,
   },
   {

@@ -1,25 +1,38 @@
 "use client"
 
+import React, { useState } from "react"
 import { useTheme } from "../contexts/ThemeContext"
-import { ChevronDown } from "lucide-react"
+import { ChevronDown, X } from "lucide-react"
 
 const Hero = () => {
   const { theme } = useTheme()
+  const [isCvOpen, setIsCvOpen] = useState(false)
+
+  const textColor = theme === "dark" ? "text-white" : "text-black"
+  const textMuted = theme === "dark" ? "text-white/80" : "text-black/70"
+  const buttonBaseClasses =
+    "inline-flex items-center justify-center px-8 py-3 rounded-lg font-medium transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-accent-custom focus:ring-offset-2 hover:scale-[1.02] hover:shadow-lg"
+  const primaryButtonClasses =
+    theme === "dark"
+      ? "bg-white text-black border border-white/20 hover:bg-white/90"
+      : "bg-black text-white border border-black/20 hover:bg-black/90"
+  const secondaryButtonClasses =
+    theme === "dark"
+      ? "bg-white/10 border border-white/20 text-white hover:bg-white/15"
+      : "bg-black/10 border border-black/20 text-black hover:bg-black/15"
 
   return (
     <section id="hero" className="min-h-screen relative flex items-center justify-center">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-8">
-          {/* Texto (alineado a la izquierda) */}
+
+          {/* Texto */}
           <div className="space-y-4 animate-slide-up max-w-xl w-full">
             <h1 className="leading-tight text-left">
-              {/* ¡Hola! con mismo estilo que el nombre pero más chico */}
-              <span
-                className={`block text-3xl md:text-5xl font-bold ${
-                  theme === "dark" ? "text-white" : "text-black"
-                }`}
-              >
-                ¡Hola!
+
+              {/* ¡Hola! */}
+              <span className={`block text-3xl md:text-5xl font-bold ${textColor}`}>
+                ¡Hola! Soy
                 <img
                   src="/waving-hand.png"
                   alt="Saludo"
@@ -28,54 +41,40 @@ const Hero = () => {
               </span>
 
               {/* Nombre */}
-              <span
-                className={`block text-4xl md:text-6xl font-bold ${
-                  theme === "dark" ? "text-white" : "text-black"
-                }`}
-              >
+              <span className={`block text-4xl md:text-6xl font-bold ${textColor}`}>
                 Joaquin Suarez
               </span>
 
-              {/* Subtítulo */}
-              <span className="block text-accent-custom text-2xl md:text-3xl font-normal mt-1">
-                Desarrollador frontend & Técnico universitario en programación
+              {/* Títulos separados en dos líneas */}
+              <span className="block text-accent-custom text-xl md:text-2xl font-normal mt-2">
+                <span className="block">Desarrollador FrontEnd</span>
+                <span className="block">Técnico universitario en programación</span>
               </span>
             </h1>
 
             {/* Descripción */}
-            <p
-              className={`text-lg md:text-xl ${
-                theme === "dark" ? "text-white/80" : "text-black/70"
-              } text-left`}
-            >
-              Diseño y construyo páginas web funcionales, modernas y pensadas para destacar.
-              Combino código limpio, diseño intuitivo y una mentalidad estratégica para que cada
-              proyecto tenga impacto real.
+            <p className={`text-lg md:text-xl ${textMuted} text-left`}>
+              Ayudo a empresas y emprendedores a tener sitios web modernos, rápidos y claros.
+              Combino desarrollo frontend y diseño para crear páginas que no solo se ven bien,
+              sino que también convierten.
             </p>
 
             {/* Botones */}
             <div className="flex flex-col sm:flex-row gap-3 justify-start mt-2">
               <a
                 href="#projects"
-                className={`inline-flex items-center justify-center px-8 py-3 rounded-lg font-medium transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-accent-custom focus:ring-offset-2 hover:scale-[1.02] hover:shadow-lg ${
-                  theme === "dark"
-                    ? "bg-white/10 border border-white/20 text-white hover:bg-white/15"
-                    : "bg-black/10 border border-black/20 text-black hover:bg-black/15"
-                }`}
+                className={`${buttonBaseClasses} ${primaryButtonClasses}`}
               >
-                Ver Proyectos
+                Ver proyectos
               </a>
-              <a
-                href="/CV Joaquin Suarez.pdf"
-                download
-                className={`inline-flex items-center justify-center px-8 py-3 rounded-lg font-medium transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-accent-custom focus:ring-offset-2 hover:scale-[1.02] hover:shadow-lg ${
-                  theme === "dark"
-                    ? "bg-white/10 border border-white/20 text-white hover:bg-white/15"
-                    : "bg-black/10 border border-black/20 text-black hover:bg-black/15"
-                }`}
+
+              <button
+                type="button"
+                onClick={() => setIsCvOpen(true)}
+                className={`${buttonBaseClasses} ${secondaryButtonClasses}`}
               >
-                Descargar CV
-              </a>
+                Ver CV
+              </button>
             </div>
           </div>
 
@@ -97,20 +96,67 @@ const Hero = () => {
 
       {/* Flecha centrada */}
       <a
-        href="#projects"
-        aria-label="Desliza hacia abajo para ver los proyectos"
+        href="#whatido"
+        aria-label="Desliza hacia abajo para ver qué hago"
         className="absolute left-1/2 -translate-x-1/2 bottom-20 md:bottom-28 group"
       >
         <span
-          className={`inline-flex items-center justify-center w-12 h-12 rounded-full border backdrop-blur-sm transition-all duration-300 hover:scale-105 ${
-            theme === "dark"
-              ? "text-white border-white/20 bg-white/10 hover:bg-white/20"
-              : "text-black border-black/20 bg-black/10 hover:bg-black/20"
-          } animate-bounce-y`}
+          className={`inline-flex items-center justify-center w-12 h-12 rounded-full border backdrop-blur-sm transition-all duration-300 hover:scale-105 ${theme === "dark"
+            ? "text-white border-white/20 bg-white/10 hover:bg-white/20"
+            : "text-black border-black/20 bg-black/10 hover:bg-black/20"
+            } animate-bounce-y`}
         >
           <ChevronDown className="w-6 h-6" />
         </span>
       </a>
+
+      {/* Modal CV */}
+      {isCvOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-4">
+          <div
+            className={`relative w-full max-w-4xl max-h-[90vh] rounded-2xl overflow-hidden flex flex-col ${theme === "dark" ? "bg-[#050816]" : "bg-white"
+              }`}
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between px-4 md:px-6 py-3 border-b border-white/10">
+              <h2 className={`text-lg md:text-xl font-semibold ${textColor}`}>Curriculum Vitae</h2>
+              <button
+                onClick={() => setIsCvOpen(false)}
+                className="p-1 rounded-full hover:bg-white/10 transition-colors"
+                aria-label="Cerrar CV"
+              >
+                <X className={theme === "dark" ? "text-white" : "text-black"} />
+              </button>
+            </div>
+
+            {/* PDF */}
+            <div className="flex-1 overflow-hidden">
+              <iframe
+                src="/CV Joaquin Suarez.pdf#view=FitH"
+                className="w-full h-[60vh] md:h-[70vh]"
+                title="CV Joaquin Suarez"
+              />
+            </div>
+
+            {/* Footer */}
+            <div className="flex flex-col md:flex-row justify-between gap-3 items-center px-4 md:px-6 py-3 border-t border-white/10">
+              <button
+                onClick={() => setIsCvOpen(false)}
+                className={`${buttonBaseClasses} ${secondaryButtonClasses} w-full md:w-auto`}
+              >
+                Cerrar
+              </button>
+              <a
+                href="/CV Joaquin Suarez.pdf"
+                download
+                className={`${buttonBaseClasses} ${primaryButtonClasses} w-full md:w-auto`}
+              >
+                Descargar CV
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Animaciones */}
       <style jsx>{`
@@ -127,6 +173,7 @@ const Hero = () => {
           transform-origin: 70% 70%;
           animation: wave 1.8s ease-in-out infinite;
         }
+
         @keyframes bounceY {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(8px); }

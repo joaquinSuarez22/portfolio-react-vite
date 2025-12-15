@@ -22,48 +22,55 @@ const Projects = () => {
     return colors[tech] || "bg-accent-custom/20 text-accent-custom border-accent-custom/30"
   }
 
+  // Proyectos destacados
   const projects = [
     {
-      id: 1,
-      title: "Cabral & Asociados — Estudio Contable",
+      id: 4,
+      slug: "servilimp",
+      title: "Servilimp Integral Coop.",
       description:
-        "Página institucional para estudio contable: servicios, presentación del equipo, información de contacto y formulario de consulta. Diseño claro, profesional y adaptable a dispositivos móviles.",
-      image: "/cabral-y-asociados.png",
+        "Página institucional para cooperativa de limpieza y mantenimiento, destacando servicios integrales y enfoque cooperativo.",
+      image: "/proyectos-imagenes/servilimp-inicio-desktop.png",
       technologies: ["React", "Tailwind CSS", "TypeScript", "Next.js"],
       buttons: [
         {
-          label: "Ver Sitio",
+          label: "Ver proyecto",
           icon: ExternalLink,
-          href: "https://cabralasociadosestudiocontable.com.ar/",
+          href: "/proyectos/servilimp",
         },
       ],
     },
     {
-      id: 2,
-      title: "Instituto Juan Pablo II",
+      id: 5,
+      slug: "bar-berlin",
+      title: "Bar Berlín",
       description:
-        "Sitio web institucional completo para centro educativo. Incluye secciones de inscripción online, información académica detallada, contacto y noticias. Diseño responsivo y navegación intuitiva para estudiantes y padres.",
-      image: "/instituto-juan-pablo-ii.png",
-      technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
-      // buttons: [{ label: "Ver Sitio", icon: ExternalLink, href: "#" }],
+        "Branding de marca y diseño de contenido para redes sociales y Google Maps para un bar temático.",
+      image: "/placeholder.svg",
+      technologies: ["Branding", "Redes Sociales", "Diseño Gráfico"],
+      buttons: [
+        {
+          label: "Ver proyecto",
+          icon: ExternalLink,
+          href: "/proyectos/bar-berlin",
+        },
+      ],
     },
     {
-      id: 3,
-      title: "iCasescobar",
+      id: 1,
+      slug: "cabral-asociados",
+      title: "Cabral & Asociados — Estudio Contable",
       description:
-        "Landing page moderna para tienda especializada en iPhones. Catálogo de dispositivos nuevos y usados, servicio técnico especializado, integración directa con WhatsApp para consultas y sistema de cotización online.",
-      image: "/icasescobar.png",
-      technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
-      // buttons: [{ label: "Ver Sitio", icon: ExternalLink, href: "#" }],
-    },
-    {
-      id: 4,
-      title: "Alto Estilo Indumentaria",
-      description:
-        "Tienda online completa de indumentaria con catálogo organizado por categorías: remeras, pantalones y accesorios. Incluye carrito de compras funcional, sistema de promociones, filtros de búsqueda y checkout integrado.",
-      image: "/alto-estilo-indumentaria.png",
-      technologies: ["Tienda Nube", "CSS"],
-      // buttons: [{ label: "Ver Tienda", icon: ExternalLink, href: "#" }],
+        "Sitio institucional para un estudio contable, con foco en servicios, confianza profesional y captación de consultas.",
+      image: "/proyectos-imagenes/cabral-asociados-inicio-desktop.png",
+      technologies: ["React", "Tailwind CSS", "TypeScript", "Next.js"],
+      buttons: [
+        {
+          label: "Ver proyecto",
+          icon: ExternalLink,
+          href: "/proyectos/cabral-asociados",
+        },
+      ],
     },
   ]
 
@@ -77,16 +84,22 @@ const Projects = () => {
               <Code className="w-8 h-8 text-accent-custom" />
             </span>
             <h2
-              className={`text-4xl font-bold ${
-                theme === "dark" ? "text-white" : "text-black"
-              }`}
+              className={`text-4xl font-bold ${theme === "dark" ? "text-white" : "text-black"
+                }`}
             >
-              Proyectos
+              Proyectos destacados
             </h2>
           </div>
+          <p
+            className={`text-base md:text-lg ${theme === "dark" ? "text-white/70" : "text-black/70"
+              }`}
+          >
+            Una selección de proyectos reales en los que combiné desarrollo frontend,
+            diseño y foco en resultados.
+          </p>
         </div>
 
-        {/* Projects List */}
+        {/* Lista de proyectos */}
         <div className="space-y-12">
           {projects.map((project) => (
             <div
@@ -94,20 +107,18 @@ const Projects = () => {
               className="backdrop-blur-xl bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/10 rounded-3xl p-6 hover:scale-[1.02] hover:bg-white/15 dark:hover:bg-black/30 transition-all duration-300 shadow-xl"
             >
               <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 items-center">
-                {/* ===== Detalles ===== */}
+                {/* Detalles */}
                 <div className="w-full text-center lg:text-left order-1 flex flex-col gap-4">
                   <h3
-                    className={`text-2xl lg:text-3xl font-bold ${
-                      theme === "dark" ? "text-white" : "text-black"
-                    }`}
+                    className={`text-2xl lg:text-3xl font-bold ${theme === "dark" ? "text-white" : "text-black"
+                      }`}
                   >
                     {project.title}
                   </h3>
 
                   <p
-                    className={`text-base leading-relaxed ${
-                      theme === "dark" ? "text-gray-300" : "text-gray-600"
-                    }`}
+                    className={`text-base leading-relaxed ${theme === "dark" ? "text-gray-300" : "text-gray-600"
+                      }`}
                   >
                     {project.description}
                   </p>
@@ -125,20 +136,17 @@ const Projects = () => {
                     ))}
                   </div>
 
-                  {/* 4️⃣ Botones Desktop */}
-                  {project.id === 1 && (
+                  {/* Botones Desktop (solo si existen botones definidos) */}
+                  {project.buttons && project.buttons.length > 0 && (
                     <div className="hidden lg:flex flex-wrap gap-4 mt-2">
                       {project.buttons.map((button) => (
                         <a
                           key={button.label}
                           href={button.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`inline-flex items-center gap-2 px-6 py-3 rounded-full border backdrop-blur-sm transition-all duration-300 hover:scale-105 ${
-                            theme === "dark"
-                              ? "bg-white/10 hover:bg-white/20 text-white border-white/20 hover:border-white/30"
-                              : "bg-black/10 hover:bg-black/20 text-black border-black/20 hover:border-black/30"
-                          }`}
+                          className={`inline-flex items-center gap-2 px-6 py-3 rounded-full border backdrop-blur-sm transition-all duration-300 hover:scale-105 ${theme === "dark"
+                            ? "bg-white/10 hover:bg-white/20 text-white border-white/20 hover:border-white/30"
+                            : "bg-black/10 hover:bg-black/20 text-black border-black/20 hover:border-black/30"
+                            }`}
                         >
                           <button.icon className="w-4 h-4" />
                           {button.label}
@@ -148,7 +156,7 @@ const Projects = () => {
                   )}
                 </div>
 
-                {/* ===== Imagen ===== */}
+                {/* Imagen */}
                 <div className="order-2 w-full">
                   <img
                     src={project.image || "/placeholder.svg"}
@@ -157,20 +165,17 @@ const Projects = () => {
                   />
                 </div>
 
-                {/* 5️⃣ Botón en mobile */}
-                {project.id === 1 && (
+                {/* Botón en mobile (si hay botones) */}
+                {project.buttons && project.buttons.length > 0 && (
                   <div className="lg:hidden w-full flex justify-center mt-2 order-3">
                     {project.buttons.map((button) => (
                       <a
                         key={button.label}
                         href={button.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`w-full max-w-xs inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border backdrop-blur-sm transition-all duration-300 hover:scale-105 ${
-                          theme === "dark"
-                            ? "bg-white/10 hover:bg-white/20 text-white border-white/20 hover:border-white/30"
-                            : "bg-black/10 hover:bg-black/20 text-black border-black/20 hover:border-black/30"
-                        }`}
+                        className={`w-full max-w-xs inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border backdrop-blur-sm transition-all duration-300 hover:scale-105 ${theme === "dark"
+                          ? "bg-white/10 hover:bg-white/20 text-white border-white/20 hover:border-white/30"
+                          : "bg-black/10 hover:bg-black/20 text-black border-black/20 hover:border-black/30"
+                          }`}
                       >
                         <button.icon className="w-4 h-4" />
                         {button.label}
@@ -181,6 +186,19 @@ const Projects = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Botón Ver más proyectos */}
+        <div className="mt-12 flex justify-center">
+          <a
+            href="/proyectos"
+            className={`inline-flex items-center justify-center px-8 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg border ${theme === "dark"
+              ? "bg-white/5 text-white border-white/20 hover:bg-white/15"
+              : "bg-black/5 text-black border-black/20 hover:bg-black/10"
+              }`}
+          >
+            Ver más proyectos
+          </a>
         </div>
       </div>
 

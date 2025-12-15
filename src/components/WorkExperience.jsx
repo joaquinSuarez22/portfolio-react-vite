@@ -1,56 +1,61 @@
 "use client"
 
-import { Briefcase } from "lucide-react"
+import { Briefcase, Code2, Users } from "lucide-react"
 import { useTheme } from "../contexts/ThemeContext"
 
 const WorkExperience = () => {
   const { theme } = useTheme()
 
+  /**
+   * type:
+   * - "tech" => experiencia en programación (prioridad visual y textual)
+   * - "other" => experiencia complementaria (soft skills)
+   */
   const experiences = [
     {
-      title: "Ventas de Tarjeta de Crédito",
-      company: "Cenco Pay",
-      period: "2025 – Actualidad",
-      description:
-        "Gestión integral de ventas de tarjetas de crédito para nuevos clientes. Prospección y calificación de leads, asesoramiento personalizado y cierre comercial por canales presenciales. Seguimiento postventa, reporte de métricas y cumplimiento de objetivos semanales.",
-      current: true,
-      hasLink: false,
-    },
-    {
-      title: "Desarrollo Web - Freelance",
+      title: "Desarrollo Web – Freelance",
       company: "Independiente",
       period: "2023 – Actualidad",
+      type: "tech",
       description:
-        "Diseño y desarrollo de páginas web personalizadas para clientes y pequeñas empresas. Creación de interfaces modernas con React y Tailwind, optimización de la experiencia de usuario y adaptación responsive. Gestión integral de proyectos: contacto inicial, desarrollo, soporte y mantenimiento.",
+        "Diseño y desarrollo de páginas web para clientes y pequeñas empresas. Trabajo con tecnologías como React, Tailwind CSS y Next.js, enfocándome en crear interfaces modernas, responsivas y optimizadas para conversión. Gestión integral del proyecto: relevamiento, desarrollo, publicación y soporte.",
       current: true,
-      hasLink: false,
-    },
-    {
-      title: "Asesor Comercial",
-      company: "Renault Galante D'Antonio",
-      period: "2025",
-      description:
-        "Asesoramiento en la venta de vehículos 0km por Plan Rombo. Gestión de cartera de clientes, tareas administrativas y acompañamiento en el proceso de suscripción hasta la entrega final.",
-      current: false,
-      hasLink: false,
     },
     {
       title: "WebStudio — Co-Founder",
       company: "WebStudio",
       period: "2023 – 2025",
+      type: "tech",
       description:
-        "Diseño y desarrollo de sitios web para pequeños negocios. Coordinación de tareas administrativas y seguimiento de proyectos. Atención al cliente y colaboración en campañas digitales y redes sociales.",
+        "Co-fundador de un estudio digital orientado al desarrollo de sitios web para pequeños negocios. Participé en el diseño, maquetado y desarrollo de proyectos web, además de la coordinación con clientes, definición de requerimientos y seguimiento de entregas.",
       current: false,
-      hasLink: false,
+    },
+    {
+      title: "Ventas de Tarjeta de Crédito",
+      company: "Cenco Pay",
+      period: "2025 – 2025",
+      type: "other",
+      description:
+        "Experiencia en ventas y atención al cliente, con foco en comunicación efectiva, cumplimiento de objetivos y seguimiento de métricas. Desarrollo de habilidades de negociación, organización y trabajo orientado a resultados.",
+      current: false,
+    },
+    {
+      title: "Asesor Comercial",
+      company: "Renault Galante D'Antonio",
+      period: "2025 - 2025",
+      type: "other",
+      description:
+        "Asesoramiento comercial y acompañamiento al cliente durante el proceso de compra. Gestión administrativa y trabajo bajo objetivos, fortaleciendo habilidades de trato con clientes y responsabilidad profesional.",
+      current: false,
     },
     {
       title: "Atención al Cliente & Repositor",
       company: "Arcolim SRL",
       period: "2022 – 2023",
+      type: "other",
       description:
-        "Atención personalizada al cliente, resolución de consultas y reposición de mercadería. Control de stock, organización del área de trabajo y colaboración en equipo.",
+        "Atención personalizada al cliente, organización del área de trabajo y control de stock. Trabajo en equipo y responsabilidad operativa en entornos dinámicos.",
       current: false,
-      hasLink: false,
     },
   ]
 
@@ -63,56 +68,90 @@ const WorkExperience = () => {
             <span className="float-icon">
               <Briefcase className="w-8 h-8 text-accent-custom" />
             </span>
-            <h2 className={`text-3xl md:text-4xl font-bold ${theme === "dark" ? "text-white" : "text-black"}`}>
+            <h2
+              className={`text-3xl md:text-4xl font-bold ${theme === "dark" ? "text-white" : "text-black"
+                }`}
+            >
               Experiencia laboral
             </h2>
           </div>
 
-          {/* Experience Timeline */}
+          {/* Timeline */}
           <div className="space-y-12">
-            {experiences.map((exp, index) => (
-              <div key={index} className="relative flex gap-6">
-                {/* Timeline dot */}
-                <div className="flex flex-col items-center">
-                  <div className="w-3 h-3 bg-accent-custom rounded-full mt-2"></div>
-                  {index < experiences.length - 1 && <div className="w-px h-full bg-gray-600 mt-2"></div>}
-                </div>
+            {experiences.map((exp, index) => {
+              const isTech = exp.type === "tech"
 
-                {/* Content */}
-                <div className="flex-1 pb-8">
-                  <div className="mb-2">
-                    <h3 className="text-xl font-bold text-accent-custom mb-1">{exp.title}</h3>
-                    <p className={`text-lg font-medium ${theme === "dark" ? "text-white" : "text-black"}`}>
-                      {exp.company}
-                    </p>
-                    <p className={`text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>{exp.period}</p>
+              return (
+                <div key={index} className="relative flex gap-6">
+                  {/* Timeline */}
+                  <div className="flex flex-col items-center">
+                    <div
+                      className={`w-3 h-3 rounded-full mt-2 ${isTech ? "bg-accent-custom" : "bg-gray-500"
+                        }`}
+                    ></div>
+                    {index < experiences.length - 1 && (
+                      <div className="w-px h-full bg-gray-600 mt-2"></div>
+                    )}
                   </div>
 
-                  <p className={`${theme === "dark" ? "text-gray-300" : "text-gray-700"} leading-relaxed`}>
-                    {exp.description}
-                  </p>
+                  {/* Content */}
+                  <div className="flex-1 pb-8">
+                    <div className="mb-2">
+                      <div className="flex items-center gap-2 mb-1">
+                        {isTech ? (
+                          <Code2 className="w-4 h-4 text-accent-custom" />
+                        ) : (
+                          <Users className="w-4 h-4 text-gray-400" />
+                        )}
 
-                  {exp.hasLink && (
-                    <a
-                      href="#"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 mt-3 text-accent-custom hover:text-accent-custom/80 transition-colors font-medium"
+                        <h3
+                          className={`text-xl font-bold ${isTech ? "text-accent-custom" : "text-white"
+                            }`}
+                        >
+                          {exp.title}
+                        </h3>
+
+                        {isTech && (
+                          <span className="text-[11px] px-2 py-0.5 rounded-full bg-accent-custom/15 text-accent-custom font-medium">
+                            Programación
+                          </span>
+                        )}
+                      </div>
+
+                      <p
+                        className={`text-lg font-medium ${theme === "dark" ? "text-white" : "text-black"
+                          }`}
+                      >
+                        {exp.company}
+                      </p>
+
+                      <p
+                        className={`text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-600"
+                          }`}
+                      >
+                        {exp.period}
+                      </p>
+                    </div>
+
+                    <p
+                      className={`leading-relaxed ${theme === "dark"
+                        ? isTech
+                          ? "text-gray-300"
+                          : "text-gray-400"
+                        : "text-gray-700"
+                        }`}
                     >
-                      Saber más
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </a>
-                  )}
+                      {exp.description}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       </div>
 
-      {/* Animación del ícono flotante */}
+      {/* Animación ícono */}
       <style jsx global>{`
         @keyframes floatY {
           0% {
@@ -125,7 +164,6 @@ const WorkExperience = () => {
             transform: translateY(0);
           }
         }
-
         .float-icon {
           display: inline-block;
           will-change: transform;
