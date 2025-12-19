@@ -166,7 +166,7 @@ const ServicesContent = () => {
                     </h2>
                   </div>
                   {service.badge && (
-                    <span className="text-[11px] md:text-xs px-3 py-1 rounded-full bg-accent-custom/10 text-accent-custom font-medium whitespace-nowrap">
+                    <span className="text-[11px] md:text-xs px-3 py-1 rounded-full bg-accent-custom/10 text-accent-custom font-medium">
                       {service.badge}
                     </span>
                   )}
@@ -189,11 +189,10 @@ const ServicesContent = () => {
                 <div className="mt-5 flex flex-col sm:flex-row gap-3">
                   <a
                     href="#projects"
-                    className={`inline-flex items-center justify-center px-5 py-2 rounded-lg text-sm font-medium border transition-colors ${
-                      isDark
+                    className={`inline-flex items-center justify-center px-5 py-2 rounded-lg text-sm font-medium border transition-colors ${isDark
                         ? "border-white/20 text-white hover:bg-white/10"
                         : "border-black/20 text-black hover:bg-black/10"
-                    }`}
+                      }`}
                   >
                     Ver ejemplos
                   </a>
@@ -234,9 +233,8 @@ const ServicesContent = () => {
                 className={`${cardBg} rounded-2xl p-5 h-full flex flex-col`}
               >
                 <h3
-                  className={`text-sm md:text-base font-semibold mb-2 ${
-                    theme === "dark" ? "text-white" : "text-black"
-                  }`}
+                  className={`text-sm md:text-base font-semibold mb-2 ${theme === "dark" ? "text-white" : "text-black"
+                    }`}
                 >
                   {step.title}
                 </h3>
@@ -290,11 +288,10 @@ const ServicesContent = () => {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className={`inline-flex items-center justify-center px-8 py-3 rounded-lg font-medium border transition-colors gap-2 ${
-                isDark
+              className={`inline-flex items-center justify-center px-8 py-3 rounded-lg font-medium border transition-colors gap-2 ${isDark
                   ? "bg-white/5 border-white/20 text-white hover:bg-white/10"
                   : "bg-black/5 border-black/20 text-black hover:bg-black/10"
-              }`}
+                }`}
             >
               <Phone className="w-5 h-5" />
               Hablemos por WhatsApp

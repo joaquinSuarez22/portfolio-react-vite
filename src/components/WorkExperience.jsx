@@ -105,7 +105,7 @@ const WorkExperience = () => {
                         )}
 
                         <h3
-                          className={`text-xl font-bold ${isTech ? "text-accent-custom" : "text-white"
+                          className={`text-xl font-bold ${isTech ? "text-accent-custom" : theme === "dark" ? "text-white" : "text-black"
                             }`}
                         >
                           {exp.title}

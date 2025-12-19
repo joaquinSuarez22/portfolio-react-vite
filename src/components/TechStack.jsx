@@ -26,7 +26,7 @@ export default function TechStack() {
     CSS: <Palette className="w-6 h-6" color="#1572B6" />,
     JavaScript: <Zap className="w-6 h-6" color="#F7DF1E" />,
     React: <Atom className="w-6 h-6" color="#61DAFB" />,
-    "Next.js": <Layers className="w-6 h-6" color="#000000" />,
+    "Next.js": <Layers className="w-6 h-6" color={theme === "dark" ? "#ffffff" : "#000000"} />,
     "Tailwind CSS": <Wind className="w-6 h-6" color="#38BDF8" />,
     Bootstrap: <Boxes className="w-6 h-6" color="#7952B3" />,
     WordPress: <FileText className="w-6 h-6" color="#21759B" />,
@@ -36,7 +36,7 @@ export default function TechStack() {
     Supabase: <Database className="w-6 h-6" color="#3ECF8E" />,
     Java: <Coffee className="w-6 h-6" color="#E76F00" />,
     Git: <GitBranch className="w-6 h-6" color="#F05032" />,
-    GitHub: <Github className="w-6 h-6" color="#181717" />,
+    GitHub: <Github className="w-6 h-6" color={theme === "dark" ? "#ffffff" : "#181717"} />,
   }
 
   const categories = [
@@ -96,17 +96,15 @@ export default function TechStack() {
           <p className="text-accent-custom text-lg mb-4 font-medium">Tecnologías</p>
 
           <h2
-            className={`text-4xl md:text-5xl font-bold mb-6 ${
-              theme === "dark" ? "text-white" : "text-black"
-            }`}
+            className={`text-4xl md:text-5xl font-bold mb-6 ${theme === "dark" ? "text-white" : "text-black"
+              }`}
           >
             Tech Stack
           </h2>
 
           <p
-            className={`text-lg max-w-3xl mx-auto leading-relaxed ${
-              theme === "dark" ? "text-gray-300" : "text-gray-600"
-            }`}
+            className={`text-lg max-w-3xl mx-auto leading-relaxed ${theme === "dark" ? "text-gray-300" : "text-gray-600"
+              }`}
           >
             {introText}
           </p>
@@ -120,16 +118,14 @@ export default function TechStack() {
               <div key={i} className="space-y-6">
                 <div className="text-center">
                   <h3
-                    className={`text-2xl md:text-3xl font-bold mb-3 ${
-                      theme === "dark" ? "text-white" : "text-black"
-                    }`}
+                    className={`text-2xl md:text-3xl font-bold mb-3 ${theme === "dark" ? "text-white" : "text-black"
+                      }`}
                   >
                     {category.title}
                   </h3>
                   <p
-                    className={`text-base md:text-lg max-w-2xl mx-auto ${
-                      theme === "dark" ? "text-gray-400" : "text-gray-600"
-                    }`}
+                    className={`text-base md:text-lg max-w-2xl mx-auto ${theme === "dark" ? "text-gray-400" : "text-gray-600"
+                      }`}
                   >
                     {category.description}
                   </p>
@@ -162,16 +158,14 @@ export default function TechStack() {
                 <div key={i} className="space-y-6">
                   <div className="text-center">
                     <h3
-                      className={`text-2xl md:text-3xl font-bold mb-3 ${
-                        theme === "dark" ? "text-white" : "text-black"
-                      }`}
+                      className={`text-2xl md:text-3xl font-bold mb-3 ${theme === "dark" ? "text-white" : "text-black"
+                        }`}
                     >
                       {category.title}
                     </h3>
                     <p
-                      className={`text-base md:text-lg ${
-                        theme === "dark" ? "text-gray-400" : "text-gray-600"
-                      }`}
+                      className={`text-base md:text-lg ${theme === "dark" ? "text-gray-400" : "text-gray-600"
+                        }`}
                     >
                       {category.description}
                     </p>

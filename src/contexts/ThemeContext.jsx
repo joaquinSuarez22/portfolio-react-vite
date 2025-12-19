@@ -1,54 +1,56 @@
 "use client"
 
-import { createContext, useContext, useState, useEffect } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
 
-// Create theme context for global theme state management
-const ThemeContext = createContext()
+// Contexto (puede ser null si algo se renderiza sin Provider)
+const ThemeContext = createContext(null)
 
-// Theme provider component that wraps the entire app
 export function ThemeProvider({ children }) {
-  // Initialize state from localStorage or default to true (dark mode)
-  const [isDark, setIsDark] = useState(() => {
-    // Only access localStorage on client side
-    if (typeof window !== "undefined") {
-      const savedTheme = localStorage.getItem("theme")
-      if (savedTheme !== null) {
-        return savedTheme === "dark"
-      }
-    }
-    return true // Default to dark mode
-  })
+  const [isDark, setIsDark] = useState(true)
 
-  // Persist theme to localStorage and update HTML class whenever it changes
+  // Leer tema guardado al montar (cliente)
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    try {
+      const savedTheme = localStorage.getItem("theme")
+      if (savedTheme === "light") setIsDark(false)
+      else setIsDark(true)
+    } catch {
+      setIsDark(true)
+    }
+  }, [])
+
+  // Guardar tema + aplicar clase dark en <html>
+  useEffect(() => {
+    try {
       localStorage.setItem("theme", isDark ? "dark" : "light")
-      // Add or remove 'dark' class from html element
-      const html = document.documentElement
-      if (isDark) {
-        html.classList.add("dark")
-      } else {
-        html.classList.remove("dark")
-      }
+      document.documentElement.classList.toggle("dark", isDark)
+    } catch {
+      // noop
     }
   }, [isDark])
 
-  // Function to toggle between dark and light themes
-  const toggleTheme = () => {
-    setIsDark(!isDark)
-  }
+  const toggleTheme = () => setIsDark((prev) => !prev)
 
-  // Computed theme string for easier conditional rendering
   const theme = isDark ? "dark" : "light"
 
-  return <ThemeContext.Provider value={{ isDark, toggleTheme, theme }}>{children}</ThemeContext.Provider>
+  return (
+    <ThemeContext.Provider value={{ isDark, toggleTheme, theme }}>
+      {children}
+    </ThemeContext.Provider>
+  )
 }
 
-// Custom hook to access theme context
+// ✅ Hook seguro: NO rompe build /404 /error si falta el Provider
 export function useTheme() {
   const context = useContext(ThemeContext)
+
   if (!context) {
-    throw new Error("useTheme must be used within a ThemeProvider")
+    return {
+      isDark: true,
+      theme: "dark",
+      toggleTheme: () => { },
+    }
   }
+
   return context
 }

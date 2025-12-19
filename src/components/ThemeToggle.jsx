@@ -6,7 +6,7 @@ const ThemeToggle = () => {
   const { isDark, toggleTheme } = useTheme()
 
   return (
-    <div className="fixed top-6 right-6 z-50">
+    <div className="fixed top-4 right-6 z-50">
       <button
         onClick={toggleTheme}
         className="p-3 rounded-full glass hover:bg-white/10 transition-all duration-300 focus:outline-none backdrop-blur-md bg-white/5 border border-white/10"

@@ -22,8 +22,8 @@ const Header = () => {
 
   // Función para obtener la URL correcta según la página actual
   const getLinkHref = (href) => {
-    // Si estamos en /servicios y el enlace es un ancla (#), redirigir a la página principal
-    if (pathname === "/servicios" && href.startsWith("#")) {
+    // Si NO estamos en la página principal y el enlace es un ancla (#), redirigir a la página principal
+    if (pathname !== "/" && href.startsWith("#")) {
       return `/${href}`
     }
     return href
@@ -34,7 +34,7 @@ const Header = () => {
   }
 
   return (
-    <header className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50">
+    <header className="fixed top-0 left-4 md:left-1/2 md:transform md:-translate-x-1/2 z-50">
       <div className="mt-4 rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-xl">
         <nav className="px-2.5 py-0.5" role="navigation" aria-label="Navegación principal">
           <div className="hidden md:flex items-center justify-center space-x-1">

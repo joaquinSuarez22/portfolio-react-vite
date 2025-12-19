@@ -38,7 +38,7 @@ const ProjectsContent = () => {
       type: "Automatización",
       description:
         "Chatbot automatizado para contadora pública que gestiona consorcios. Consultas de expensas y atención 24/7.",
-      image: "/placeholder.svg",
+      image: "/proyectos-imagenes/chatbot/chatbot-wpp.png",
       technologies: ["ManyChat", "Google Sheets", "Apps Script"],
     },
     {
@@ -48,7 +48,7 @@ const ProjectsContent = () => {
       type: "Web institucional",
       description:
         "Página institucional para cooperativa de limpieza y mantenimiento, con foco en claridad y profesionalismo.",
-      image: "/proyectos-imagenes/servilimp-inicio-desktop.png",
+      image: "/proyectos-imagenes/servilimp/servilimp.png",
       technologies: ["React", "Tailwind CSS", "TypeScript", "Next.js"],
       siteUrl: "https://servilimp.com.ar/",
     },
@@ -59,7 +59,7 @@ const ProjectsContent = () => {
       type: "Branding & redes",
       description:
         "Branding de marca y diseño de contenido para redes sociales y Google Maps.",
-      image: "/placeholder.svg",
+      image: "/proyectos-imagenes/berlin/logo-completo-berlin.png",
       technologies: ["Branding", "Redes Sociales", "Diseño Gráfico"],
     },
     {
@@ -69,7 +69,7 @@ const ProjectsContent = () => {
       type: "Web institucional",
       description:
         "Sitio institucional con foco en servicios, confianza profesional y captación de consultas.",
-      image: "/proyectos-imagenes/cabral-asociados-inicio-desktop.png",
+      image: "/proyectos-imagenes/cabral-asociados/cabral-asociados.png",
       technologies: ["React", "Tailwind CSS", "TypeScript", "Next.js"],
       siteUrl: "https://cabralasociadosestudiocontable.com.ar/",
     },
@@ -80,7 +80,7 @@ const ProjectsContent = () => {
       type: "Web educativa",
       description:
         "Web institucional para centro educativo con información clara y navegación sencilla.",
-      image: "/proyectos-imagenes/instituto-juan-pablo-ii.png",
+      image: "/proyectos-imagenes/instituto-juan-pablo-ii/instituto-juan-pablo-ii.png",
       technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
     },
     {
@@ -90,7 +90,7 @@ const ProjectsContent = () => {
       type: "Landing comercial",
       description:
         "Landing page para tienda de iPhones con catálogo y contacto directo por WhatsApp.",
-      image: "/proyectos-imagenes/icasescobar.png",
+      image: "/proyectos-imagenes/icasescobar/icasescobar.png",
       technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
     },
   ]
@@ -167,8 +167,8 @@ const ProjectsContent = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`inline-flex items-center justify-center px-6 py-2.5 rounded-full text-sm font-medium border transition ${isDark
-                            ? "bg-white/5 border-white/20 text-white hover:bg-white/10"
-                            : "bg-black/5 border-black/20 text-black hover:bg-black/10"
+                          ? "bg-white/5 border-white/20 text-white hover:bg-white/10"
+                          : "bg-black/5 border-black/20 text-black hover:bg-black/10"
                           }`}
                       >
                         <ExternalLink className="w-4 h-4 mr-2" />

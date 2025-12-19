@@ -18,6 +18,9 @@ const Projects = () => {
       "Tailwind CSS": "bg-cyan-500/20 text-cyan-400 border-cyan-500/30",
       TypeScript: "bg-blue-600/20 text-blue-300 border-blue-600/30",
       "Node.js": "bg-green-500/20 text-green-400 border-green-500/30",
+      Branding: "bg-pink-500/20 text-pink-400 border-pink-500/30",
+      "Redes Sociales": "bg-purple-600/20 text-purple-300 border-purple-600/30",
+      "Diseño Gráfico": "bg-rose-500/20 text-rose-400 border-rose-500/30",
     }
     return colors[tech] || "bg-accent-custom/20 text-accent-custom border-accent-custom/30"
   }
@@ -30,7 +33,7 @@ const Projects = () => {
       title: "Servilimp Integral Coop.",
       description:
         "Página institucional para cooperativa de limpieza y mantenimiento, destacando servicios integrales y enfoque cooperativo.",
-      image: "/proyectos-imagenes/servilimp-inicio-desktop.png",
+      image: "/proyectos-imagenes/servilimp/servilimp.png",
       technologies: ["React", "Tailwind CSS", "TypeScript", "Next.js"],
       buttons: [
         {
@@ -46,7 +49,7 @@ const Projects = () => {
       title: "Bar Berlín",
       description:
         "Branding de marca y diseño de contenido para redes sociales y Google Maps para un bar temático.",
-      image: "/placeholder.svg",
+      image: "/proyectos-imagenes/berlin/logo-completo-berlin.png",
       technologies: ["Branding", "Redes Sociales", "Diseño Gráfico"],
       buttons: [
         {
@@ -62,7 +65,7 @@ const Projects = () => {
       title: "Cabral & Asociados — Estudio Contable",
       description:
         "Sitio institucional para un estudio contable, con foco en servicios, confianza profesional y captación de consultas.",
-      image: "/proyectos-imagenes/cabral-asociados-inicio-desktop.png",
+      image: "/proyectos-imagenes/cabral-asociados/cabral-asociados.png",
       technologies: ["React", "Tailwind CSS", "TypeScript", "Next.js"],
       buttons: [
         {
@@ -79,7 +82,7 @@ const Projects = () => {
       <div className="container mx-auto max-w-6xl">
         {/* Header con ícono flotante */}
         <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-3 mb-4">
+          <div className="flex items-center justify-center gap-2 mb-4">
             <span className="float-icon">
               <Code className="w-8 h-8 text-accent-custom" />
             </span>

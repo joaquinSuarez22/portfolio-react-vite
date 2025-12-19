@@ -1,12 +1,24 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useTheme } from "../contexts/ThemeContext"
-import { ChevronDown, X } from "lucide-react"
+import { ChevronDown, X, Linkedin, Instagram } from "lucide-react"
 
 const Hero = () => {
   const { theme } = useTheme()
   const [isCvOpen, setIsCvOpen] = useState(false)
+
+  // Bloquear scroll cuando el modal está abierto
+  useEffect(() => {
+    if (isCvOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "unset"
+    }
+    return () => {
+      document.body.style.overflow = "unset"
+    }
+  }, [isCvOpen])
 
   const textColor = theme === "dark" ? "text-white" : "text-black"
   const textMuted = theme === "dark" ? "text-white/80" : "text-black/70"
@@ -22,7 +34,7 @@ const Hero = () => {
       : "bg-black/10 border border-black/20 text-black hover:bg-black/15"
 
   return (
-    <section id="hero" className="min-h-screen relative flex items-center justify-center">
+    <section id="hero" className="min-h-screen relative flex items-center justify-center pt-32 md:pt-0">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-8">
 
@@ -60,7 +72,7 @@ const Hero = () => {
             </p>
 
             {/* Botones */}
-            <div className="flex flex-col sm:flex-row gap-3 justify-start mt-2">
+            <div className="flex flex-col sm:flex-row gap-3 justify-start mt-2 items-center">
               <a
                 href="#projects"
                 className={`${buttonBaseClasses} ${primaryButtonClasses}`}
@@ -75,6 +87,34 @@ const Hero = () => {
               >
                 Ver CV
               </button>
+
+              {/* Redes Sociales */}
+              <div className="flex gap-3 ml-2">
+                <a
+                  href="https://www.linkedin.com/in/joaquinsuarez"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`p-3 rounded-full transition-all duration-300 hover:scale-110 ${theme === "dark"
+                    ? "text-white hover:text-white/80"
+                    : "text-black hover:text-black/80"
+                    }`}
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin size={20} />
+                </a>
+                <a
+                  href="https://www.instagram.com/jjoaco.dev/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`p-3 rounded-full transition-all duration-300 hover:scale-110 ${theme === "dark"
+                    ? "text-white hover:text-white/80"
+                    : "text-black hover:text-black/80"
+                    }`}
+                  aria-label="Instagram"
+                >
+                  <Instagram size={20} />
+                </a>
+              </div>
             </div>
           </div>
 
@@ -82,11 +122,11 @@ const Hero = () => {
           <div className="animate-fade-in">
             <div className="glass rounded-2xl p-4 glow-hover">
               <img
-                src="/FotoCarnetJoaquinSuarez.jpeg"
+                src="/FotoHero.png"
                 alt="Joaquín Suárez - Frontend Developer"
-                className="w-52 h-52 md:w-60 md:h-60 rounded-full object-cover"
+                className="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover"
                 onError={(e) => {
-                  e.currentTarget.src = "/FotoCarnetJoaquinSuarez.jpeg"
+                  e.currentTarget.src = "/FotoHero.png"
                 }}
               />
             </div>
@@ -98,7 +138,7 @@ const Hero = () => {
       <a
         href="#whatido"
         aria-label="Desliza hacia abajo para ver qué hago"
-        className="absolute left-1/2 -translate-x-1/2 bottom-20 md:bottom-28 group"
+        className="hidden md:block absolute left-1/2 -translate-x-1/2 bottom-20 md:bottom-28 group"
       >
         <span
           className={`inline-flex items-center justify-center w-12 h-12 rounded-full border backdrop-blur-sm transition-all duration-300 hover:scale-105 ${theme === "dark"
